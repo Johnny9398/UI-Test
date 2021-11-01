@@ -1,0 +1,140 @@
+<section class="ss">
+    <div class="row">
+        <div class="col-md-12 center">
+
+            <form class="regform" #regform="ngForm" (ngSubmit)="regform.valid && addmember(regform)">
+                <div class="row">
+                    <h4>sign-up</h4>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-6">
+                        <label>Firstname</label>
+                        <input type="text" class="form-control" placeholder="enter first name..." name="firstname"
+                            #firstname="ngModel" [(ngModel)]="signin.firstName" pattern="^[A-Z]{1,1}[a-z]{1,30}$"
+                            required>
+                        <span
+                            *ngIf="(firstname.errors?.required  && firstname.touched) || (firstname.errors?.required && regform.submitted)"
+                            style="color: red;">please enter first name</span>
+                        <span style="color: red;"
+                            *ngIf="(firstname.errors?.pattern && firstname.touched ) || (firstname.errors?.pattern && regform.submitted)">First
+                            letter should be capital </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Lastname</label>
+                        <input type="text" class="form-control" placeholder="enter last name..." name="lastname"
+                            #lastname="ngModel" [(ngModel)]="signin.lastName" pattern="^[A-Z]{1,1}[a-z]{1,30}$"
+                            required>
+                        <span style="color: red;"
+                            *ngIf="(lastname.errors?.required && lastname.touched) || (lastname.errors?.required && regform.submitted)">Last
+                            name is required</span>
+                        <span style="color: red;"
+                            *ngIf="(lastname.errors?.pattern && lastname.touched ) || (lastname.errors?.pattern && regform.submitted)">
+                            First letter should be capital </span>
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group">
+
+                    <label>email</label>
+                    <input type="text" class="form-control" placeholder="enter a valid email" name="email"
+                        #email="ngModel" [(ngModel)]="signin.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        required>
+                    <span style="color: red;"
+                        *ngIf="(email.errors?.required && email.touched) || (email.errors?.required && regform.submitted)">Email
+                        is required</span>
+                    <span style="color: red;"
+                        *ngIf="(email.errors?.pattern && email.touched) || (email.errors?.pattern && regform.submitted)">
+                        Enter a valid email</span>
+                </div>
+
+                <div class="form-group">
+
+                    <label>Mobile number</label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile number" name="mobile"
+                        #mobile="ngModel" [(ngModel)]="signin.mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$" required>
+                    <span style="color: red;"
+                        *ngIf="(mobile.errors?.required && mobile.touched) || (mobile.errors?.required && regform.submitted)">Mobile
+                        number is required</span>
+                    <span style="color: red;"
+                        *ngIf="(mobile.errors?.pattern && mobile.touched) || (mobile.errors?.pattern && regform.submitted)">Please
+                        Enter 10 Digits Mobile number</span>
+                </div>
+
+
+                <!-- <div class="radio">
+                    <label for="genders" *ngFor="let gender of genders">
+                        <input [value]="gender" name="gender" ngModel type="radio">&nbsp;&nbsp;{{gender}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </label>
+                </div> -->
+
+
+                <div class="form-group">
+
+                    <input type="radio" name="gender" #gender="ngModel" value="Male" [(ngModel)]="signin.gender"
+                        required> Male &nbsp;&nbsp;
+
+                    <input type="radio" name="gender" #gender="ngModel" value="Female" [(ngModel)]="signin.gender"
+                        required>
+                    Female
+                    <br>
+                    <span style="color: red;" *ngIf="(gender.invalid && regform.submitted)">Gender is required</span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>password</label>
+                    <input type="password" class="form-control" placeholder="enter password..." name="password"
+                        #password="ngModel" [(ngModel)]="signin.password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{5,}"
+                        required>
+                    <span style="color: red;"
+                        *ngIf="(password.errors?.required && password.touched) || (password.errors?.required && regform.submitted)">password
+                        is Mandatory</span>
+                    <span style="color: red;"
+                        *ngIf="(password.errors?.pattern && password.touched) || (password.errors?.pattern && regform.submitted)">
+                        password must contain at least one number and one uppercase and lowercase letter,
+                        and at
+                        least 5 or more characters</span>
+                </div>
+
+                <div class="form-group">
+                    <label>confirm password</label>
+                    <input type="password" class="form-control" placeholder="confirm password..." name="confirmpassword"
+                        #confirmpassword="ngModel" [(ngModel)]="signin.confirmpassword" pattern="{{signin.password}}"
+                        required>
+                    <span
+                        *ngIf="(confirmpassword.errors?.required && confirmpassword.touched) || (confirmpassword.errors?.required && regform.submitted)"
+                        style="color: red;">password is required</span>
+                    <span
+                        *ngIf="(confirmpassword.errors?.pattern && confirmpassword.touched) || (confirmpassword.errors?.pattern && regform.submitted)"
+                        style="color: red;">password must be
+                        match</span>
+
+
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" name="checkbox" #checkbox="ngModel" [(ngModel)]="signin.checkbox" required> I
+                    agree
+                    all statements in<a href="#">Terms & Conditions</a><br>
+                    <span style="color: rgb(145, 133, 133);"
+                        *ngIf="(checkbox.invalid && checkbox.touched) || (regform.submitted)"> By clicking
+                        on
+                        the above you
+                        can accept the
+                        terms and condtions</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Register">
+                </div>
+                <br>
+            </form>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,160 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2"><a [routerLink]="['/layout']"><i
+        class="fas fa-arrow-left"></i></a>&nbsp;Dashboard</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute  text-left">
+
+      <button class="butn" onclick="document.getElementById('id01').style.display='block'"
+        style="width:auto;height:auto;"><i class="fas fa-2x fa-user-plus"></i>&nbsp;&nbsp;Add employee</button>
+      <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button>
+              <mat-icon><span class="material-icons" (click)="edit(row)">
+                  edit
+                </span></mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="delete(row)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="emplid">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Id
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element ;index as i">EMP{{i+1}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.EmpName}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="mobile">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.EmpMobile}} </mat-cell>
+        </ng-container>
+
+
+
+
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Gender </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.EmpGender}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.EmpLocation}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="salary">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Salary </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.EmpSalary}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Empmail}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+
+
+
+
+
+
+    </div>
+    <div id="id01" class="modal">
+
+
+
+      <form class="regform modal-content animate" #regform="ngForm" (ngSubmit)="regform.valid && addmember(regform)">
+
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
+          <h5><i class="fas fa-2x fa-users"></i><br>Add new employee</h5>
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" placeholder="please Enter name..." name="firstname"
+            #firstname="ngModel" [(ngModel)]="empdetail.EmpName" required>
+          <span
+            *ngIf="(firstname.errors?.required  && firstname.touched) || (firstname.errors?.required && regform.submitted)"
+            style="color: red;">please enter Name</span>
+        </div>
+
+        <div class="form-group">
+
+          <label>email</label>
+          <input type="text" class="form-control" placeholder="Please Enter a valid email" name="email" #email="ngModel"
+            [(ngModel)]="empdetail.Empmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+          <span style="color: red;"
+            *ngIf="(email.errors?.required && email.touched) || (email.errors?.required && regform.submitted)">Email
+            is required</span>
+          <span style="color: red;"
+            *ngIf="(email.errors?.pattern && email.touched) || (email.errors?.pattern && regform.submitted)">
+            Enter a valid email</span>
+        </div>
+
+        <div class="form-group">
+
+          <label>Mobile number</label>
+          <input type="text" class="form-control" placeholder="Enter Mobile number" name="mobile" #mobile="ngModel"
+            [(ngModel)]="empdetail.EmpMobile" pattern="^((\\+91-?)|0)?[0-9]{10}$" required>
+          <span style="color: red;"
+            *ngIf="(mobile.errors?.required && mobile.touched) || (mobile.errors?.required && regform.submitted)">Mobile
+            number is required</span>
+          <span style="color: red;"
+            *ngIf="(mobile.errors?.pattern && mobile.touched) || (mobile.errors?.pattern && regform.submitted)">Please
+            Enter 10 Digits Mobile number</span>
+        </div>
+        <div class="form-group">
+
+          <span class="int"> <input type="radio" name="gender" #gender="ngModel" value="Male"
+              [(ngModel)]="empdetail.EmpGender" required>
+            Male &nbsp;&nbsp;
+
+            <input type="radio" name="gender" #gender="ngModel" value="Female" [(ngModel)]="empdetail.EmpGender"
+              required>
+            Female
+            <br>
+            <span style="color: red;" *ngIf="(gender.invalid && regform.submitted)">Gender is required</span></span>
+        </div>
+
+        <div class="form-group">
+
+          <label>Enter Salary</label>
+          <input type="text" class="form-control" placeholder="Enter Salary" name="salary" #salary="ngModel"
+            [(ngModel)]="empdetail.EmpSalary" required>
+          <span style="color: red;"
+            *ngIf="(mobile.errors?.required && mobile.touched) || (mobile.errors?.required && regform.submitted)">please
+            enter salary</span>
+
+        </div>
+
+
+
+        <div class="form-group inpt">
+          <input class="inpt" type="submit" class="btn btn-primary" value="Add Employee">
+
+
+        </div>
+        <br>
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>

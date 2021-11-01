@@ -1,0 +1,102 @@
+h4{
+    text-align: center;
+    margin-top: 6px;
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: rgb(241, 238, 245);
+    text-shadow: darkslategrey;
+    
+    font-weight: normal;
+   }
+   .signin{
+       margin-top:30px;
+       margin-left:30px;
+       width:100%;
+      
+   }
+   
+   
+   .regform{
+
+   background-color: rgb(253, 253, 253);
+   
+   margin-top: -10px;
+   margin-left:360px;
+   padding-top:10px;
+   padding-left:30px;
+   color: whitesmoke;
+   padding-right:0px;
+   border-radius: 7%;
+   box-shadow: 0 30 40px 20px rgba(0, 0, 0, 0.212);
+   /* background-image: linear-gradient(rgb(241, 237, 237),rgb(239, 239, 243),rgb(241, 237, 237)); */
+   backface-visibility: hidden;
+   background: transparent;
+   width: 45%;
+   height: 100vh;
+      
+   }
+   form-control{
+       height: 35px;
+       
+   }
+   ::-webkit-input-placeholder{
+    color:rgb(41, 34, 34);
+}
+   .ss{
+    /* background-image: linear-gradient( rgb(122, 115, 115) , rgb(92, 92, 53)); */
+    background-image: linear-gradient(rgba(44, 43, 43, 0.596),rgb(27, 27, 44)),url("../../assets/img2.jpeg"); 
+      margin-left:50px;
+      margin-right:60px;
+     border-radius: 10px 10px;
+     margin-bottom: -0px;
+     padding: 20px;
+     padding-top: -80px;
+     padding-bottom: 70px;
+     height: 1000px;  
+   }
+   img{
+       width: 70%;
+       height:60%; 
+       margin-top:130px;
+       margin-left:100px;
+       border-radius: 400% 150% 200% 300% ;
+       box-shadow:6px 6px 1px 1px rgb(59, 147, 206);
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   @media (max-width: 1200px){
+       /* /Tablets [601px -> 1200px]/ */
+       .img{
+           margin-left: 30px;
+           width:80%;
+       }
+   
+   }
+   
+   @media screen and (max-width: 770px){
+       /* /Big smartphones [426px -> 600px]/ */
+      .img{ margin-top:30px;
+   
+   }
+   .regform {
+       padding-left: 1px;
+   }
+   }
+   @media screen  and (max-width: 768px) and (min-width:765px){
+       /* /Big smartphones [426px -> 600px]/ */
+      .img{ margin-top:180px;
+   }
+   }
+   @media screen and (max-width: 765px) and (min-width:350px){
+       /* /Big smartphones [426px -> 600px]/ */
+      .img{ margin-top:30px;
+       
+   }
+   }

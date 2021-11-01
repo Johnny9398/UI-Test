@@ -1,0 +1,74 @@
+<br>
+<br>
+
+<section class="ss">
+    <div class="row">
+        <div class="col-md-6">
+
+            <form class="regform" #regform="ngForm" (ngSubmit)="(regform.form.valid && login())">
+
+                <h4 style="color:white;">Login</h4>
+                <br>
+                <br>
+                <br>
+
+                <label>User Name :</label>
+                <input type="text" style="background-color: transparent;color:#fff;" class="form-control"
+                    placeholder="enter user name..." name="firstname" #firstname="ngModel"
+                    [(ngModel)]="signin.firstName" required>
+                <span
+                    *ngIf="(firstname.errors?.required  && firstname.touched) || (firstname.errors?.required && regform.submitted)"
+                    style="color: red;">please enter Valid user name</span>
+                <span style="color: red;"
+                    *ngIf="(firstname.errors?.pattern && firstname.touched ) || (firstname.errors?.pattern && regform.submitted)">First
+                    letter should be capital </span>
+
+
+
+
+                <br>
+
+
+                <div class="form-group">
+                    <label>password :</label>
+                    <input style="background-color: transparent;color:#fff;" type="password" class="form-control"
+                        placeholder="enter password..." name="password" #password="ngModel"
+                        [(ngModel)]="signin.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" required>
+                    <span style="color: red;"
+                        *ngIf="(password.errors?.required && password.touched) || (password.errors?.required && regform.submitted)">password
+                        is Mandatory</span>
+                    <span style="color: red;"
+                        *ngIf="(password.errors?.pattern && password.touched) || (password.errors?.pattern && regform.submitted)">
+                        password must contain at least one number and one uppercase and lowercase letter,
+                        and at
+                        least 5 or more characters</span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <input type="checkbox" name="checkbox" #checkbox="ngModel" [(ngModel)]="signin.checkbox"
+                        required><span style="color:#fff; margin-left:0.5em;">Keep
+                        me
+                        signed
+                        in</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                        [routerLink]="['/sign']">Don't have account
+                        signin?</a><br>
+                    <span style="color: red" *ngIf="(checkbox.invalid && checkbox.touched) || (regform.submitted)">By
+                        clicking you Dont need
+                        to login many times...</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="&nbsp;&nbsp;Login&nbsp;&nbsp; ">
+                </div>
+                <br>
+                <a class="int" href="#">Forgot password?</a>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <img class="img" src="../../assets/undraw_thought_process_re_om58.svg">
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,98 @@
+
+h4{
+    text-align: center;
+   }
+   .signin{
+       margin-top:30px;
+       margin-left:30px;
+       width:100%;
+      
+      
+   }
+   .regform{
+         
+   background-color: transparent;
+   
+   margin-top: 50px;
+   margin-left:60px;
+   padding-top:10px;
+   padding-left:30px;
+   padding-right:20px;
+   border-radius: 3%;
+      
+   }
+   label{
+       color:#ffff;
+   }
+   ::-webkit-input-placeholder{
+       color:rgb(233, 229, 229);
+   }
+   .ss{
+       
+     padding-bottom:50px;
+      margin-left:50px;
+      margin-right:60px;
+     border-radius: 10px ;
+     background-position: center;
+     background-repeat:initial;
+    
+     background-image: linear-gradient(rgba(37, 36, 36, 0.753),rgba(54, 54, 119, 0.308)),url("../../assets/img1.jpeg");
+       
+   }
+   img{
+       width: 70%;
+       height:80%; 
+       margin-top:80px;
+       margin-left:70px;
+    //    border-radius: 400% 150% 200% 300% ;
+     // box-shadow:1px 1px 1px 1px #ffff;
+   }
+   
+   .int{
+       
+       color:white;
+   }
+   
+   
+   
+   
+   
+   
+   
+   @media (max-width: 1200px){
+       /*Tablets [601px -> 1200px]*/
+       .img{
+           margin-left: 30px;
+           width:80%;
+       }
+   
+   }
+   
+   @media screen and (max-width: 770px){
+       /*Big smartphones [426px -> 600px]*/
+      .img{ margin-top:30px;
+   
+   }
+   .regform {
+       padding-left: 1px;
+   }
+   }
+   @media screen  and (max-width: 768px) and (min-width:765px){
+       /*Big smartphones [426px -> 600px]*/
+      .img{ margin-top:180px;
+   }
+   }
+   @media screen and (max-width: 765px) and (min-width:350px){
+       /*Big smartphones [426px -> 600px]*/
+      .img{ margin-top:30px;
+       
+   }
+   }
+   
+   
+   
+   
+   
+   
+   
+   
